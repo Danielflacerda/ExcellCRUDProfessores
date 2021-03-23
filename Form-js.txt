@@ -1,0 +1,217 @@
+<script type = "text/javascript">
+
+
+document.getElementById("btnpesquisar").addEventListener("click", Pesquisar);
+ 
+  function Pesquisar(){
+  
+  
+  var criteriopesquisa = document.getElementById("Campo1").value;
+  
+  if (criteriopesquisa.trim().length == 0){  
+   alert("Precisa fornecer critério para pesquisa!");
+   return false;
+  };
+  
+ 
+  
+  google.script.run.withSuccessHandler(Carregar).PesquisarDados(criteriopesquisa);
+  
+  function Carregar(retorno){  
+   
+  if (retorno != "Não encontrado!"){
+  
+  document.getElementById("Campo1").value = retorno[0]
+  M.updateTextFields();
+  document.getElementById("Campo2").value = retorno[1]
+  M.updateTextFields();
+  document.getElementById("Campo3").value = retorno[2]
+  M.updateTextFields();
+  document.getElementById("Campo4").value = retorno[3]
+  M.updateTextFields();
+  document.getElementById("Campo5").value = retorno[4]
+  M.updateTextFields();
+  document.getElementById("Campo6").value = retorno[5]
+  M.updateTextFields();
+  
+  }else{
+  
+  alert("Não encontrado!");
+   Limpar();
+   
+  }
+    
+  }
+  }
+  
+  document.getElementById("btnlimpar").addEventListener("click", Limpar);
+ 
+  function Limpar(){
+  
+  document.getElementById("Campo1").value = "";
+  document.getElementById("Campo2").value = "";
+  document.getElementById("Campo3").value = "";
+  document.getElementById("Campo4").value = "";
+  document.getElementById("Campo5").value = "";
+  document.getElementById("Campo6").value = "";
+    
+  }
+  
+  
+  document.getElementById("btnexcluir").addEventListener("click", Excluir);
+ 
+  function Excluir(){
+  
+  
+  var criteriopesquisa = document.getElementById("Campo1").value;
+  
+  if (criteriopesquisa.trim().length == 0){  
+   alert("Precisa fornecer critério para pesquisa!");
+   return false;
+  };
+   
+  var r = confirm("Deseja Realmente Excluir este item?");
+
+if (r==false){
+alert("Operação Cancelada")
+return false;
+}
+
+  google.script.run.withSuccessHandler(Carregar).ExcluirDados(criteriopesquisa);
+  
+  function Carregar(retorno){  
+   
+  if (retorno != "Não encontrado!"){
+  
+  Limpar();
+  
+  alert("Excluído com sucesso!");
+  
+  }else{
+  
+  alert(retorno);
+  }
+    
+  }
+  }
+  
+  document.getElementById("btnsalvar").addEventListener("click", Salvar);
+   
+   function Salvar(){
+   
+   var Campo1 = document.getElementById("Campo1").value;
+   var Campo2 = document.getElementById("Campo2").value;
+   var Campo3 = document.getElementById("Campo3").value;
+   var Campo4 = document.getElementById("Campo4").value;
+   var Campo5 = document.getElementById("Campo5").value;
+   var Campo6 = document.getElementById("Campo6").value;
+   
+   
+   if (Campo1.trim().length != 0){   
+   alert("Campo1 precisa ser vazio porque é gerado automaticamente ao salvar!");
+   return false;   
+   }
+   
+   if (Campo2.trim().length == 0 || Campo3.trim().length == 0 || Campo4.trim().length == 0 || 
+   Campo5.trim().length == 0 || Campo6.trim().length == 0){
+   
+   alert("Preencher todos os campos, exceto o campo1");
+       
+   }else{
+   
+  var Dados ={
+ 
+
+ Campo2: Campo2,
+ Campo3: Campo3,
+ Campo4: Campo4,
+ Campo5: Campo5,
+ Campo6: Campo6,
+  
+   
+   };
+   
+   
+ google.script.run.withSuccessHandler(Salvar).SalvarDados(Dados);
+   
+  function Salvar(retorno) {
+  
+  alert(retorno);
+
+  Limpar();
+  
+     }
+}
+}
+ 
+
+
+document.getElementById("btneditar").addEventListener("click", Editar);
+   
+   function Editar(){
+   
+   var Campo1 = document.getElementById("Campo1").value;
+   var Campo2 = document.getElementById("Campo2").value;
+   var Campo3 = document.getElementById("Campo3").value;
+   var Campo4 = document.getElementById("Campo4").value;
+   var Campo5 = document.getElementById("Campo5").value;
+   var Campo6 = document.getElementById("Campo6").value;
+      
+   
+   if (Campo1.trim().length == 0 || Campo2.trim().length == 0 || Campo3.trim().length == 0 || Campo4.trim().length == 0 || 
+   Campo5.trim().length == 0 || Campo6.trim().length == 0){
+   
+   alert("Preencher todos os campos");
+       
+   }else{
+   
+  var Dados ={
+ 
+ Campo1: Campo1,
+ Campo2: Campo2,
+ Campo3: Campo3,
+ Campo4: Campo4,
+ Campo5: Campo5,
+ Campo6: Campo6,
+  
+   
+   };
+   
+   
+ google.script.run.withSuccessHandler(Editar).EditarDados(Dados);
+   
+  function Editar(retorno) {
+  
+  alert(retorno);
+  if(retorno != "ID não encontrado!" ){
+  Limpar();
+  }
+     }
+}
+}
+  
+  
+  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

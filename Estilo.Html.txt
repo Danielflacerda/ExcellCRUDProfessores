@@ -1,0 +1,153 @@
+<style>
+
+#objetos{
+background-color: #00BFFF;
+
+}
+
+
+#Campo1{
+position: absolute;
+top: 15px;
+left: 90px;
+
+}
+
+#Label1{
+position: absolute;
+top: 15px;
+left: 20px;
+}
+
+#Campo2{
+position: absolute;
+top: 15px;
+left: 415px;
+}
+
+#Label2{
+position: absolute;
+top: 15px;
+left: 320px;
+}
+
+
+#Campo3{
+position: absolute;
+top: 60px;
+left: 90px;
+}
+
+#Label3{
+position: absolute;
+top: 60px;
+left: 20px;
+}
+
+#Campo4{
+position: absolute;
+top: 60px;
+left: 415px;
+}
+
+#Label4{
+position: absolute;
+top: 60px;
+left: 320px;
+}
+
+
+#Campo5{
+position: absolute;
+top: 105px;
+left: 90px;
+}
+
+#Label5{
+position: absolute;
+top: 105px;
+left: 20px;
+}
+
+#Campo6{
+position: absolute;
+top: 105px;
+left: 415px;
+}
+
+#Label6{
+position: absolute;
+top: 105px;
+left: 320px;
+}
+
+#btnlimpar{
+
+position: absolute;
+top: 195px;
+left: 20px;
+background-color: #A9A9A9;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+
+#btnpesquisar{
+position: absolute;
+top: 195px;
+left: 145px;
+background-color: #FFFF00;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+
+#btneditar{
+
+position: absolute;
+top: 195px;
+left: 270px;
+background-color: #FF4500;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+
+#btnsalvar{
+
+position: absolute;
+top: 195px;
+left: 400px;
+background-color: #00FF00;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+#btnexcluir{
+
+position: absolute;
+top: 195px;
+left: 530px;
+background-color: #FF0000;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+

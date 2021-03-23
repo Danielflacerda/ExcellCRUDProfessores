@@ -1,0 +1,130 @@
+var url = "LINK URL DE SUA PLANILHA"
+
+function PesquisarDados(criteriopesquisa){
+
+var planilha = SpreadsheetApp.openByUrl(url);
+var guiadados = planilha.getSheetByName("Dados");
+
+var dados = guiadados.getRange(2, 1, guiadados.getLastRow(),6).getValues();
+
+for(var linha = 0; linha<dados.length; linha++){
+          
+     if(dados[linha][0] == criteriopesquisa || dados[linha][1] == criteriopesquisa){           
+       
+        var Carregar={};
+        
+        var data = Utilities.formatDate(dados[linha][4], Session.getScriptTimeZone(), "dd/MM/yyyy");
+        var valor = dados[linha][5].toLocaleString("pt-BR");
+        
+        Carregar.Campo1 = dados[linha][0]
+        Carregar.Campo2 = dados[linha][1];
+        Carregar.Campo3 = dados[linha][2];      
+        Carregar.Campo4 = dados[linha][3];         
+        Carregar.Campo5 = data;
+        Carregar.Campo6 = valor;
+    
+         return ([Carregar.Campo1,Carregar.Campo2, Carregar.Campo3, Carregar.Campo4, Carregar.Campo5, Carregar.Campo6])     
+         
+         
+     }
+     
+
+
+}
+
+return "Não encontrado!";
+
+
+}
+
+
+function ExcluirDados(criteriopesquisa){
+
+var planilha = SpreadsheetApp.openByUrl(url);
+var guiadados = planilha.getSheetByName("Dados");
+
+var dados = guiadados.getRange(2, 1, guiadados.getLastRow()).getValues();
+
+for(var linha = 0; linha<dados.length; linha++){
+          
+     if(dados[linha][0] == criteriopesquisa){           
+       
+           var linha = linha + 2;
+           
+           guiadados.deleteRow(linha);           
+    
+         return "Excluído!"    
+         
+         
+     }
+
+}
+
+return "Não encontrado!";
+
+
+}
+
+
+function SalvarDados(Dados){
+
+var planilha = SpreadsheetApp.openByUrl(url);
+var guiadados = planilha.getSheetByName("Dados");
+
+var novoid = Math.max.apply(null, guiadados.getRange("A2:A").getValues()); 
+var novoid = novoid + 1
+
+
+var linha = guiadados.getLastRow() + 1;
+
+guiadados.getRange(linha, 1).setValue(novoid);
+guiadados.getRange(linha, 2).setValue([Dados.Campo2]);
+guiadados.getRange(linha, 3).setValue([Dados.Campo3]);
+guiadados.getRange(linha, 4).setValue([Dados.Campo4]);
+guiadados.getRange(linha, 5).setValue([Dados.Campo5]);
+guiadados.getRange(linha, 6).setValue([Dados.Campo6]);
+
+guiadados.getRange(linha, 5).setNumberFormat('dd"/"mm"/"yyyy');
+
+return "Salvo com sucesso!";
+
+
+
+}
+
+
+
+function EditarDados(Dados){
+
+var planilha = SpreadsheetApp.openByUrl(url);
+var guiadados = planilha.getSheetByName("Dados");
+
+var criteriopesquisa = Dados.Campo1
+
+var dados = guiadados.getRange(2, 1, guiadados.getLastRow()).getValues();
+
+for(var linha = 0; linha<dados.length; linha++){
+          
+     if(dados[linha][0] == criteriopesquisa){   
+     
+      var linha = linha + 2;
+
+      guiadados.getRange(linha, 2).setValue([Dados.Campo2]);
+      guiadados.getRange(linha, 3).setValue([Dados.Campo3]);
+      guiadados.getRange(linha, 4).setValue([Dados.Campo4]);
+      guiadados.getRange(linha, 5).setValue([Dados.Campo5]);
+      guiadados.getRange(linha, 6).setValue([Dados.Campo6]);
+
+       guiadados.getRange(linha, 5).setNumberFormat('dd"/"mm"/"yyyy');
+
+          return "Editado com sucesso!";
+    }
+}
+
+return "ID não encontrado!";
+
+}
+
+
+
+
