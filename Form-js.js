@@ -6,7 +6,7 @@ document.getElementById("btnpesquisar").addEventListener("click", Pesquisar);
   function Pesquisar(){
   
   
-  var criteriopesquisa = document.getElementById("Campo1").value;
+  var criteriopesquisa = document.getElementById("ID").value;
   
   if (criteriopesquisa.trim().length == 0){  
    alert("Precisa fornecer critério para pesquisa!");
@@ -21,17 +21,17 @@ document.getElementById("btnpesquisar").addEventListener("click", Pesquisar);
    
   if (retorno != "Não encontrado!"){
   
-  document.getElementById("Campo1").value = retorno[0]
+  document.getElementById("ID").value = retorno[0]
   M.updateTextFields();
-  document.getElementById("Campo2").value = retorno[1]
+  document.getElementById("CPF").value = retorno[1]
   M.updateTextFields();
-  document.getElementById("Campo3").value = retorno[2]
+  document.getElementById("Nome").value = retorno[2]
   M.updateTextFields();
-  document.getElementById("Campo4").value = retorno[3]
+  document.getElementById("Genero").value = retorno[3]
   M.updateTextFields();
-  document.getElementById("Campo5").value = retorno[4]
+  document.getElementById("Nascimento").value = retorno[4]
   M.updateTextFields();
-  document.getElementById("Campo6").value = retorno[5]
+  document.getElementById("Salario").value = retorno[5]
   M.updateTextFields();
   
   }else{
@@ -48,12 +48,12 @@ document.getElementById("btnpesquisar").addEventListener("click", Pesquisar);
  
   function Limpar(){
   
-  document.getElementById("Campo1").value = "";
-  document.getElementById("Campo2").value = "";
-  document.getElementById("Campo3").value = "";
-  document.getElementById("Campo4").value = "";
-  document.getElementById("Campo5").value = "";
-  document.getElementById("Campo6").value = "";
+  document.getElementById("ID").value = "";
+  document.getElementById("CPF").value = "";
+  document.getElementById("Nome").value = "";
+  document.getElementById("Genero").value = "";
+  document.getElementById("Nascimento").value = "";
+  document.getElementById("Salario").value = "";
     
   }
   
@@ -63,7 +63,7 @@ document.getElementById("btnpesquisar").addEventListener("click", Pesquisar);
   function Excluir(){
   
   
-  var criteriopesquisa = document.getElementById("Campo1").value;
+  var criteriopesquisa = document.getElementById("ID").value;
   
   if (criteriopesquisa.trim().length == 0){  
    alert("Precisa fornecer critério para pesquisa!");
@@ -99,34 +99,34 @@ return false;
    
    function Salvar(){
    
-   var Campo1 = document.getElementById("Campo1").value;
-   var Campo2 = document.getElementById("Campo2").value;
-   var Campo3 = document.getElementById("Campo3").value;
-   var Campo4 = document.getElementById("Campo4").value;
-   var Campo5 = document.getElementById("Campo5").value;
-   var Campo6 = document.getElementById("Campo6").value;
+   var ID = document.getElementById("ID").value;
+   var CPF = document.getElementById("CPF").value;
+   var Nome = document.getElementById("Nome").value;
+   var Genero = document.getElementById("Genero").value;
+   var Nascimento[ = document.getElementById("Nascimento[").value;
+   var Salario = document.getElementById("Salario").value;
    
    
-   if (Campo1.trim().length != 0){   
-   alert("Campo1 precisa ser vazio porque é gerado automaticamente ao salvar!");
+   if (ID.trim().length != 0){   
+   alert("ID precisa ser vazio porque é gerado automaticamente ao salvar!");
    return false;   
    }
    
-   if (Campo2.trim().length == 0 || Campo3.trim().length == 0 || Campo4.trim().length == 0 || 
-   Campo5.trim().length == 0 || Campo6.trim().length == 0){
+   if (CPF.trim().length == 0 || Nome.trim().length == 0 || Genero.trim().length == 0 || 
+   Nascimento[.trim().length == 0 || Salario.trim().length == 0){
    
-   alert("Preencher todos os campos, exceto o campo1");
+   alert("Preencher todos os campos, exceto o ID");
        
    }else{
    
   var Dados ={
  
 
- Campo2: Campo2,
- Campo3: Campo3,
- Campo4: Campo4,
- Campo5: Campo5,
- Campo6: Campo6,
+ CPF: CPF,
+ Nome: Nome,
+ Genero: Genero,
+ Nascimento: Nascimento,
+ Salario: Salario,
   
    
    };
@@ -150,16 +150,16 @@ document.getElementById("btneditar").addEventListener("click", Editar);
    
    function Editar(){
    
-   var Campo1 = document.getElementById("Campo1").value;
-   var Campo2 = document.getElementById("Campo2").value;
-   var Campo3 = document.getElementById("Campo3").value;
-   var Campo4 = document.getElementById("Campo4").value;
-   var Campo5 = document.getElementById("Campo5").value;
-   var Campo6 = document.getElementById("Campo6").value;
+   var ID = document.getElementById("ID").value;
+   var CPF = document.getElementById("CPF").value;
+   var Nome = document.getElementById("Nome").value;
+   var Genero = document.getElementById("Genero").value;
+   var Nascimento[ = document.getElementById("Nascimento[").value;
+   var Salario = document.getElementById("Salario").value;
       
    
-   if (Campo1.trim().length == 0 || Campo2.trim().length == 0 || Campo3.trim().length == 0 || Campo4.trim().length == 0 || 
-   Campo5.trim().length == 0 || Campo6.trim().length == 0){
+   if (ID.trim().length == 0 || CPF.trim().length == 0 || Nome.trim().length == 0 || Genero.trim().length == 0 || 
+   Nascimento[.trim().length == 0 || Salario.trim().length == 0){
    
    alert("Preencher todos os campos");
        
@@ -167,12 +167,12 @@ document.getElementById("btneditar").addEventListener("click", Editar);
    
   var Dados ={
  
- Campo1: Campo1,
- Campo2: Campo2,
- Campo3: Campo3,
- Campo4: Campo4,
- Campo5: Campo5,
- Campo6: Campo6,
+ ID: ID,
+ CPF: CPF,
+ Nome: Nome,
+ Genero: Genero,
+ Nascimento: Nascimento,
+ Salario: Salario,
   
    
    };

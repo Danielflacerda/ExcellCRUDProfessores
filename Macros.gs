@@ -1,4 +1,4 @@
-var url = "LINK URL DE SUA PLANILHA"
+var url = "https://docs.google.com/spreadsheets/d/1DpuqAO9pYLu4Ku0Euu_Uc0x5cBF3aM2blhjV-TbPiXM/edit#gid=0"
 
 function PesquisarDados(criteriopesquisa){
 
@@ -16,14 +16,14 @@ for(var linha = 0; linha<dados.length; linha++){
         var data = Utilities.formatDate(dados[linha][4], Session.getScriptTimeZone(), "dd/MM/yyyy");
         var valor = dados[linha][5].toLocaleString("pt-BR");
         
-        Carregar.Campo1 = dados[linha][0]
-        Carregar.Campo2 = dados[linha][1];
-        Carregar.Campo3 = dados[linha][2];      
-        Carregar.Campo4 = dados[linha][3];         
-        Carregar.Campo5 = data;
-        Carregar.Campo6 = valor;
+        Carregar.ID = dados[linha][0]
+        Carregar.CPF = dados[linha][1];
+        Carregar.Nome = dados[linha][2];      
+        Carregar.Genero = dados[linha][3];         
+        Carregar.Nascimento = data;
+        Carregar.Salario = valor;
     
-         return ([Carregar.Campo1,Carregar.Campo2, Carregar.Campo3, Carregar.Campo4, Carregar.Campo5, Carregar.Campo6])     
+         return ([Carregar.ID,Carregar.CPF, Carregar.Nome, Carregar.Genero, Carregar.Nascimento, Carregar.Salario])     
          
          
      }
@@ -78,11 +78,11 @@ var novoid = novoid + 1
 var linha = guiadados.getLastRow() + 1;
 
 guiadados.getRange(linha, 1).setValue(novoid);
-guiadados.getRange(linha, 2).setValue([Dados.Campo2]);
-guiadados.getRange(linha, 3).setValue([Dados.Campo3]);
-guiadados.getRange(linha, 4).setValue([Dados.Campo4]);
-guiadados.getRange(linha, 5).setValue([Dados.Campo5]);
-guiadados.getRange(linha, 6).setValue([Dados.Campo6]);
+guiadados.getRange(linha, 2).setValue([Dados.CPF]);
+guiadados.getRange(linha, 3).setValue([Dados.Nome]);
+guiadados.getRange(linha, 4).setValue([Dados.Genero]);
+guiadados.getRange(linha, 5).setValue([Dados.Nascimento]);
+guiadados.getRange(linha, 6).setValue([Dados.Salario]);
 
 guiadados.getRange(linha, 5).setNumberFormat('dd"/"mm"/"yyyy');
 
@@ -99,7 +99,7 @@ function EditarDados(Dados){
 var planilha = SpreadsheetApp.openByUrl(url);
 var guiadados = planilha.getSheetByName("Dados");
 
-var criteriopesquisa = Dados.Campo1
+var criteriopesquisa = Dados.ID
 
 var dados = guiadados.getRange(2, 1, guiadados.getLastRow()).getValues();
 
@@ -109,11 +109,11 @@ for(var linha = 0; linha<dados.length; linha++){
      
       var linha = linha + 2;
 
-      guiadados.getRange(linha, 2).setValue([Dados.Campo2]);
-      guiadados.getRange(linha, 3).setValue([Dados.Campo3]);
-      guiadados.getRange(linha, 4).setValue([Dados.Campo4]);
-      guiadados.getRange(linha, 5).setValue([Dados.Campo5]);
-      guiadados.getRange(linha, 6).setValue([Dados.Campo6]);
+      guiadados.getRange(linha, 2).setValue([Dados.CPF]);
+      guiadados.getRange(linha, 3).setValue([Dados.Nome]);
+      guiadados.getRange(linha, 4).setValue([Dados.Genero]);
+      guiadados.getRange(linha, 5).setValue([Dados.Nascimento]);
+      guiadados.getRange(linha, 6).setValue([Dados.Salario]);
 
        guiadados.getRange(linha, 5).setNumberFormat('dd"/"mm"/"yyyy');
 
